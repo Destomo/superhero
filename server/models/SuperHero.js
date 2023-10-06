@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   class SuperHeroes extends Model {
     
     static associate(models) {
-      
+      SuperHero.belongsToMany(models.SuperPowers, {through: 'superhero_to_superpowers', foreingKey: "heroId"})
+      SuperHero.hasMany(models.HeroImg, {foreingKey: "heroId"})
     }
   }
   SuperHeroes.init({
@@ -21,15 +22,16 @@ module.exports = (sequelize, DataTypes) => {
     originDescription: {
       type: DataTypes.TEXT, 
       allowNull: false, 
-      field: 'originDescriptions'},
+      field: 'origin_description'},
     catchPhrase: {
       type: DataTypes.STRING, 
       allowNull: false, 
-      field: 'catchPhrase'}
+      field: 'catch_phrase'}
   }, {
     sequelize,
     modelName: 'SuperHeroes',
     tableName: 'super_heroes'
   });
+
   return SuperHeroes;
 };
