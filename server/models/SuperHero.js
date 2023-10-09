@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   class SuperHeroes extends Model {
     
     static associate(models) {
-      SuperHero.belongsToMany(models.SuperPowers, {through: 'superhero_to_superpowers', foreingKey: "heroId"})
-      SuperHero.hasMany(models.HeroImg, {foreingKey: "heroId"})
+      SuperHero.belongsToMany(models.SuperPowers, {through: 'superhero_to_superpowers', foreignKey: ""})
+      SuperHero.hasMany(models.HeroImg, {foreignKey: "heroId"})
     }
   }
   SuperHeroes.init({
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'SuperHeroes',
-    tableName: 'super_heroes'
+    tableName: 'superheroes'
   });
 
   return SuperHeroes;

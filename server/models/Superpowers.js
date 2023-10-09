@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   
     static associate(models) {
       SuperPowers.BelongsToMany(models.SuperHero, {
-        foreingKey: 'superPowerId',
+        foreignKey: 'superPowerId',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       })
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   SuperPowers.associate = (models) => {
-    SuperPowers.BelongsToMany(models.SuperHero, {through: 'superhero_to_superpowers', foreingKey: "superPowerId"})
+    SuperPowers.BelongsToMany(models.SuperHero, {through: 'superhero_to_superpowers', foreignKey: "superPowerId"})
   };
 
   return SuperPowers;

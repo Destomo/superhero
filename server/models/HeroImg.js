@@ -3,21 +3,20 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class heroImg extends Model {
+  class HeroImg extends Model {
 
     static associate(models) {
-      HeroImg.belongsTo(models.SuperHero, {foreingKey: "heroId"})
+      HeroImg.belongsTo(models.SuperHero, {foreignKey: "heroId"})
     }
   }
-  heroImg.init({
+  HeroImg.init({
     img: {
-      type:DataTypes.STRING,
-    allowNull: false
+      type:DataTypes.STRING
   }
   }, {
     sequelize,
     modelName: 'HeroImg',
     tableName: 'hero_img'
   });
-  return heroImg;
+  return HeroImg;
 };
